@@ -1,0 +1,141 @@
+.messages {
+
+    border-left: 2px solid rgb(53,167,110, 0.2);
+    border-right: 2px solid rgb(53,167,110, 0.2);
+    border-bottom: 2px solid rgb(53,167,110, 0.2);
+}
+.messages__wrapper {
+
+    display: grid;
+    grid-template-areas:"m_h m_h m_h"
+                        "m_dL m_d m_d"
+                        "m_dL m_d m_d";
+    text-align: center;
+}
+.messages__header {
+    height: 100px;
+    grid-area: m_h;
+    border-bottom: 2px solid rgb(53,167,110, 0.2);
+}
+.messages__header h2 {
+    padding-top: 10px;
+}
+.messages__dialogsList {
+    grid-area: m_dL;
+    padding-top: 20px;
+    
+}
+.messages__dialogsList li {
+    list-style: none;
+}
+button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: rgb(64,199,129);
+    transition: 0.3s;
+}
+.messages__dialogs {
+    padding-top: 20px;
+    min-height: 400px;
+    
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 10px;
+    border-left: 2px solid rgb(53,167,110, 0.2);
+    grid-area: m_d;
+}
+.inputDialog input{
+    min-height: 21px;
+    min-width: 200px;
+}
+.buttonDialog button{
+    background-color: rgb(64,199,129);
+    border-radius: 20px;
+    margin-left: 10px;
+}
+.buttonDialog button:hover{
+    background-color: rgb(62, 172, 115);
+    
+}
+
+.dialogs__message_1 {
+    
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    text-align: start;
+    padding-left: 20px;
+    align-items: flex-start;
+    grid-area: m1;
+}
+.dialogs__message_1 p{
+    margin: 3px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: white;
+}
+.dialogs__message_2 {
+    
+    border-radius: 10px;
+    padding-right: 20px;
+    text-align: end;
+    align-self: start;
+    grid-area: m2;
+}
+.dialogs__item_wrapper {
+    
+    grid-area: send;
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.messages__dialogs {
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:"m1 m2"
+                        "send send";
+    background-image: url(../image/background2.jpg);
+    height: 400px;
+    overflow-y: auto;
+}
+.dialogs__item_content {
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+    padding: 25px;
+    border-radius: 25px;
+}
+@media screen and (max-width: 630px) {
+    .dialogs__item_content {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .inputDialog input{
+        margin-bottom: 4px;
+        min-height: 21px;
+        min-width: 50px;
+    }
+}
+@media screen and (max-width: 435px) {
+    .inputDialog input{
+        margin-bottom: 4px;
+        min-height: 11px;
+        min-width: 30px;
+        max-width: 120px;
+    }
+    .buttonDialog button{
+        margin: 0;
+    }
+    .dialogs__item_content {
+        
+    }
+}
