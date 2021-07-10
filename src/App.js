@@ -14,14 +14,11 @@ function App(props) {
     <div className="App">
       <div className="App__wrapper">
       <Header />
-      <Main_left friends={props.friends_leftBlock__data}/>
+      <Main_left store={props.store}/>
       <div className="App__wrapper__content">
       <Route path="/Profile" render={ () => <Main_right_Container
         store={props.store}/> } />
       <Route path="/Messages" render={ () => <Messages_container
-        //messageData={props.messageData.messageData}
-        //messages={props.messages}
-        //dispatch={props.dispatch}
         store={props.store}/> }/>
       <Redirect to="/Profile" />
       </div>

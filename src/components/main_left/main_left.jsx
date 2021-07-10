@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './main_left.module.css';
 import { NavLink } from 'react-router-dom';
+
+
 const FriendsItem = (props) => {
   return (
     <div>
@@ -13,7 +15,7 @@ const FriendsItem = (props) => {
 }
 const Main_left = (props) => {
 
-    let Friend_block = props.friends.map(p => <FriendsItem image={p.image} name={p.name}/>)
+    let Friend_block = props.store.getState().friends_leftBlock.friends_leftBlock__data.map(p => <FriendsItem image={p.image} name={p.name}/>)
     return (
         <div className={styles.main_left}>
         <ul className={styles.main_left__list}>
