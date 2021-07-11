@@ -3,23 +3,17 @@ import styles from './main_right.module.css';
 import User_post from '../User_post/user_post';
 import banner from '../image/banner.jpg';
 import logo_user from '../image/logo_user.png';
-import {addPostActionCreator} from '../../reducer/post_reducer'
-import {updateNewPostTextActionCreator} from '../../reducer/post_reducer'
-import Main_right_Container from './main_right_container'
-const Main_right = (props) => {
+export const Main_right = (props) => {
   
     let newPostElement = React.createRef();
    
     let onAddPost = () => {
       props.addPost()
-      //props.dispatch(addPostActionCreator());
       
     }
     let inputChange = () => {
       let text = newPostElement.current.value;
       props.updateNewPostText(text);
-      //let action = updateNewPostTextActionCreator(text);
-      //props.dispatch(action);
     }
     
     let handleKeyPress = (e) => {
@@ -65,4 +59,3 @@ const Main_right = (props) => {
     )
 }
 
-export default Main_right;

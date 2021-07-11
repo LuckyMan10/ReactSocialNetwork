@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './Messages.module.css';
 import { NavLink } from 'react-router-dom';
-import {updateNewMessage, sendMessageCreator} from '../../reducer/messages_reducer';
-import AddChange from './Messages_container';
-import AddSendMessage from './Messages_container';
+
+
 
 const Messages_item = (props) => {
     return (
