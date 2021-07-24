@@ -12,8 +12,8 @@
   text-decoration: none;
   width: 55%;
   font-family: 'Nunito', sans-serif;
+  
 }
-
 
 .App {
   display: flex;
@@ -115,4 +115,8 @@
   background-color: white;
   border-left: 2px solid rgb(53,167,110, 0.2);
   border-right: 2px solid rgb(53,167,110, 0.2);
+}
+.monke {
+  display: flex;
+  justify-content: center;
 }

@@ -1,8 +1,3 @@
-/*
-main_left
-main_left__list
-settings
-*/
 .main_left {
     grid-area: m_l;
 
@@ -12,11 +7,11 @@ settings
     font-weight: 400;
     padding-top: 20px;
     padding-right: 20px;
+    li {
+        cursor: pointer;
+    }
 }
 
-.main_left__list li {
-   cursor: pointer;
-}
 ul {
     list-style: none;
     padding: 0;
@@ -41,27 +36,27 @@ a.active {
 .Friends_1 {
     padding: 10px;
     padding-left: 0px;
+    p {
+        text-align: start;
+        padding-top: 0;
+        margin: 0;
+    }
 }
-.Friends_1 p{
-    text-align: start;
-    padding-top: 0;
-    margin: 0;
-}
+
 .main_left__Friends {
 display: flex;
 flex-direction: column;
-
 }
 .Friends__block {
     display: flex;
     text-align: start;
-}
-.Friends__block img {
-    text-indent: -100vw;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    padding: 0;
+    img {
+        text-indent: -100vw;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        padding: 0;
+    }
 }
 .Friends__header {
     font-size: 25px;

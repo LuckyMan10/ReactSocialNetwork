@@ -1,0 +1,128 @@
+$color1: rgba(53, 167, 110, 0.2);
+
+.Users {
+    border-right: 1px solid $color1;
+    border-left: 1px solid $color1;
+    border-bottom: 1px solid $color1;
+
+    button {
+        min-width: 110px;
+        cursor: pointer;
+        border: none;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 3px;
+        background: rgb(64, 199, 129);
+        box-shadow: 0 -3px rgb(53, 167, 110) inset;
+        transition: 0.2s;
+    }
+}
+
+button:hover {
+    background: rgb(53, 167, 110);
+}
+
+.Users__header {
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.Users__user {
+    margin-bottom: 10px;
+    border: 1px solid $color1;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.user__photo_subbutton {
+    display: flex;
+    flex-direction: row;
+}
+
+.user_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user__photo {
+    border-radius: 45px;
+}
+
+.user__PersonalInfo {
+    width: 100%;
+    height: 100%;
+    margin-left: 20px;
+    padding-left: 15px;
+    margin-right: 20px;
+    padding-right: 15px;
+    border: 0px solid $color1;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.PersonalInfo__Name_status {
+    display: flex;
+    flex-direction: column;
+
+    p {
+        padding-bottom: 8px;
+        padding-top: 8px;
+        font-size: 20px;
+        margin: 0;
+    }
+}
+
+.name {
+    font-weight: 600;
+}
+
+.PersonalInfo__Country_city {
+
+    display: flex;
+    flex-direction: column;
+    p {
+        font-size: 20px;
+        margin: 0;
+    }
+}
+
+.Users__show_more {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.selectedPage {
+    font-weight: bold;
+}
+
+.header__pages {
+    display: flex;
+    flex-direction: row;
+    span {
+        padding-left: 6px;
+        padding-right: 6px;
+        cursor: pointer;
+    }
+    p {
+        margin: 0;
+        cursor: pointer;
+        padding-bottom: 30px;
+    }
+}

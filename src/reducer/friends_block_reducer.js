@@ -7,7 +7,6 @@ let initialState = {
       ],
 }
 
-const friends_leftBlock__data = (state = initialState, action) => {
+export const friends_leftBlock__data = (state = initialState, action) => {
     return state;
 }
-export default friends_leftBlock__data;

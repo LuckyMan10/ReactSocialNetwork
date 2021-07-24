@@ -1,4 +1,5 @@
-
+$color1: rgba(53,167,110, 0.2);
+$color2: rgb(53, 167, 110);
 .form__text {
     background-color: white;
     outline: none;
@@ -19,7 +20,7 @@
     padding: 10px;
     border-radius: 3px;
     background: rgb(64,199,129);
-    box-shadow: 0 -3px rgb(53,167,110) inset;
+    box-shadow: 0 -3px $color2 inset;
     transition: 0.2s;
 }
 .form__wrapper {
@@ -30,8 +31,8 @@
   
 .main_right__wrapper_content {
     background-color: white;
-    border-left: 2px solid rgb(53,167,110, 0.2);
-    border-right: 2px solid rgb(53,167,110, 0.2);
+    border-left: 2px solid $color1;
+    border-right: 2px solid $color1;
 }
 .main_right__header {
     min-height: 100px;
@@ -45,6 +46,10 @@
   }
   .userInfo__image {
     margin-top: -50px;
+    
+  }
+  .userInfo__image img {
+    border-radius: 45px;
   }
   .main_right__userInfo {
     padding-left: 20px;
@@ -54,6 +59,7 @@
     justify-content: space-between;
   }
   .editInfo__button {
+    margin: 5px;
     cursor: pointer;
     border: none;
     font-weight: 700;
@@ -62,15 +68,19 @@
     padding: .8em 1em calc(.8em + 3px);
     border-radius: 3px;
     background: rgb(64,199,129);
-    box-shadow: 0 -3px rgb(53,167,110) inset;
+    box-shadow: 0 -3px $color2 inset;
     transition: 0.2s;
+  }
+  .userInfo__editInfo {
+      display: flex;
+      flex-direction: column;
   }
 
 .editInfo__button:hover {
-    background: rgb(53, 167, 110);
+    background: $color2;
 }
 .form__button:hover {
-    background: rgb(53, 167, 110);
+    background: $color2;
 }
   
 .userInfo__text h3{
@@ -82,11 +92,13 @@
 .main_right {
     grid-area: m_r;
     background-color: rgb(247, 247, 247);
+    
 }
 .main_right__addPost {
     padding-left: 20px;
-    margin-bottom: -9px;
+    margin-bottom: -2px;
     background-color: white;
+    border-bottom: 2px solid $color1;
 }
 .main_right__userInfo {
     background-color: white;

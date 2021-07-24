@@ -1,13 +1,11 @@
 import React from 'react';
 import logo from '../image/Logo.png';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 
-const Header = () => {
+export const Header = () => {
     return (
         <div className={styles.Header}>
         <img width="70" src={logo} className={styles.Header__logo}></img>
         </div>
     )
 }
-
-export default Header;

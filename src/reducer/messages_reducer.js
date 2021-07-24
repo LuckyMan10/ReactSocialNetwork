@@ -16,7 +16,7 @@ let initialState = {
   newMessageBody: '',
 }
 
-const messageReducer = (state = initialState, action) => {
+export const messageReducer = (state = initialState, action) => {
     switch (action.type) {
       case UPDATE_NEW_MESSAGE_BODY: {
         let stateCopy = {...state};
@@ -36,8 +36,4 @@ const messageReducer = (state = initialState, action) => {
     }
 }
 export const sendMessageCreator = () => ({type: SEND_MESSAGE})
-export const updateNewMessage = (body) => 
-  ({type: UPDATE_NEW_MESSAGE_BODY, body: body})
-
-
-export default messageReducer;
+export const updateNewMessage = (body) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body})

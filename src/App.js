@@ -1,30 +1,63 @@
 import './App.css';
-import Header from './components/Header/Header';
-import Main_left from './components/main_left/main_left';
-import Main_right from './components/main_right/main_right';
-import Main_right_Container from './components/main_right/main_right_container';
-import Messages from './components/Messages/Messages';
+import {Header} from './components/Header/Header';
+import {ProfileContainer} from './components/profile/ProfileContainer';
 import {BrowserRouter, Route, Redirect} from 'react-router-dom';
-import Messages_container from './components/Messages/Messages_container';
-import Main_left_container from './components/main_left/main_left_container';
+import {MessageContainer} from './components/Messages/Messages_container';
+import {MenuContainer} from './components/Menu/MenuContainer';
+import {UsersContainer} from './components/Users/UsersContainer';
+import {LoginContainer} from './components/login/loginContainer';
+import {MusicContainer} from './components/Music/MusicContainer';
+import React from 'react';
+import {getAuthSession} from './reducer/auth-reducer';
+import { connect } from 'react-redux';
+import {compose} from 'redux'
+import monke from './image/mokey.jpg';
 
-function App(props) {
+const Monke_preload = (props) => {
   return (
-    <BrowserRouter>
-    <div className="App">
-      <div className="App__wrapper">
-      <Header />
-      <Main_left_container/>
-      <div className="App__wrapper__content">
-      <Route path="/Profile" render={ () => <Main_right_Container /> } />
-      <Route path="/Messages" render={ () => <Messages_container /> } />
-      <Redirect to="/Profile" />
-      </div>
-      </div>
+    <div className="monke">
+      <img src={monke}></img>
     </div>
-    </BrowserRouter>
-  );
-  
+  )
 }
 
-export default App;
+class AppComponent extends React.Component {
+  
+  componentDidMount() {
+    this.props.getAuthSession()
+    
+  }
+  
+  render() {
+    return (this.props.initialized === false && this.props.authorized === true) ? <Monke_preload /> : 
+      (
+      <BrowserRouter>
+      <div className="App">
+      <div className="App__wrapper">
+      <Header />
+      <MenuContainer/>
+      <div className="App__wrapper__content">
+      <Route path="/Profile/:userId?" render={ () => <ProfileContainer /> } />
+      <Route path="/Messages" render={ () => <MessageContainer /> } />
+      <Route path="/Users" render={ () => <UsersContainer />} />
+      <Route path="/Login" render={ () => <LoginContainer />} />
+      <Route path="/Music" render={ () => <MusicContainer />}/>
+      <Redirect to ="/Profile"/>
+      </div>
+      </div>
+      </div>
+    </BrowserRouter>
+    )
+  
+} 
+
+  
+}
+const mapStateToProps = (state) => ({
+  initialized: state.AuthReducer.initialized,
+  isAuth: state.AuthReducer.isAuth,
+  authorized: state.AuthReducer.authorized,
+})
+
+export const App = compose(
+  connect(mapStateToProps, {getAuthSession}))(AppComponent);

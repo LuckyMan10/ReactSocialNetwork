@@ -1,8 +1,6 @@
 import React from 'react';
-import styles from './Messages.module.css';
+import styles from './Messages.module.scss';
 import { NavLink } from 'react-router-dom';
-
-
 
 const Messages_item = (props) => {
     return (
@@ -11,6 +9,7 @@ const Messages_item = (props) => {
     </div>
     )
 }
+
 const MessageMapItem = (props) => {
     return (
         <div>
@@ -20,25 +19,26 @@ const MessageMapItem = (props) => {
 }
 
 
-const Messages = (props) => {
-    
-    const AddInputMessageChange = (e) => {
+export class Messages extends React.Component {
+
+    AddInputMessageChange = (e) => {
         let body = e.target.value;
-        props.AddChange(body);
+        this.props.updateNewMessage(body);
     }
 
-    const sendMessage = () => {
-        props.AddSendMessage()
-    //props.store.dispatch(sendMessageCreator());
+    sendMessage = () => {
+        this.props.sendMessageCreator()
     }
-    const handleKeyPress = (e) => {
+
+    handleKeyPress = (e) => {
         let handleKeyPressEvent = e.keyCode || e.which;
         if (handleKeyPressEvent === 13) {
-            sendMessage();
+            this.sendMessage();
         }
     }
-    let mItem = props.messageData.map(p => <Messages_item id={p.id} Username={p.Username}/>)
-    let messageMap = props.messages.map(p => <MessageMapItem id={p.id} text={p.message}/>)
+
+    render() {
+
     return (
         <div className={styles.messages}>
             <div className={styles.messages__wrapper}>
@@ -46,13 +46,13 @@ const Messages = (props) => {
                 <h2>Messages</h2>
             </div>
             <div className={styles.messages__dialogsList}>
-                {mItem}
+                {this.props.messageData.map(p => <Messages_item id={p.id} Username={p.Username}/>)}
                
             </div>
             <div className={styles.messages__dialogs}>
                     
                         <div className={styles.dialogs__message_1}>
-                            {messageMap}
+                            {this.props.messages.map(p => <MessageMapItem id={p.id} text={p.message}/>)}
                             
                         </div>
                         <div className={styles.dialogs__message_2}>
@@ -62,10 +62,10 @@ const Messages = (props) => {
                     <div className={styles.dialogs__item_wrapper}>
                     <div className={styles.dialogs__item_content}>
                     <div className={styles.inputDialog}>
-                        <input onKeyPress={handleKeyPress} value={props.newMessageBody} onChange={AddInputMessageChange}></input>
+                        <input onKeyPress={this.handleKeyPress} value={this.props.newMessageBody} onChange={this.AddInputMessageChange}></input>
                     </div>
                     <div className={styles.buttonDialog}>
-                        <button onClick={sendMessage}>Отправить</button>
+                        <button onClick={this.sendMessage}>Отправить</button>
                     </div>
                 </div>
                 </div>
@@ -74,4 +74,4 @@ const Messages = (props) => {
         </div>
     )
 }
-export default Messages;
+}

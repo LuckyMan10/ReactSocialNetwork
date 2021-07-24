@@ -1,0 +1,10 @@
+.header__search {
+    display: flex;
+    flex-direction: row;
+    .search_button:hover{
+        background: none;
+    }
+    label {
+        padding-right: 5px;
+    }
+}
