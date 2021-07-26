@@ -12,7 +12,7 @@ class ProfileComponent extends React.Component {
   componentDidMount() {
     let Id = this.props.match.params.userId;
     if (!Id) {
-      Id = 18508;
+      Id = 18550;
     };
     this.props.getUsersProfile(Id)
     this.props.getStatusProfile(Id)
@@ -53,3 +53,4 @@ export const ProfileContainer = compose(
   withRouter,
   WithAuthRedirect
 )(ProfileComponent);
+

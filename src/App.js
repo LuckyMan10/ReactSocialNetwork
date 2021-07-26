@@ -1,8 +1,6 @@
 import './App.css';
 import {Header} from './components/Header/Header';
-import {ProfileContainer} from './components/profile/ProfileContainer';
 import {BrowserRouter, Route, Redirect} from 'react-router-dom';
-import {MessageContainer} from './components/Messages/Messages_container';
 import {MenuContainer} from './components/Menu/MenuContainer';
 import {UsersContainer} from './components/Users/UsersContainer';
 import {LoginContainer} from './components/login/loginContainer';
@@ -12,11 +10,14 @@ import {getAuthSession} from './reducer/auth-reducer';
 import { connect } from 'react-redux';
 import {compose} from 'redux'
 import monke from './image/mokey.jpg';
+import {MessageContainer} from './components/Messages/Messages_container';
+import {ProfileContainer} from './components/profile/ProfileContainer';
+
 
 const Monke_preload = (props) => {
   return (
     <div className="monke">
-      <img src={monke}></img>
+
     </div>
   )
 }
@@ -37,8 +38,12 @@ class AppComponent extends React.Component {
       <Header />
       <MenuContainer/>
       <div className="App__wrapper__content">
-      <Route path="/Profile/:userId?" render={ () => <ProfileContainer /> } />
-      <Route path="/Messages" render={ () => <MessageContainer /> } />
+      <Route path="/Profile/:userId?" render={ () => 
+      <ProfileContainer />
+       } />
+      <Route path="/Messages" render={ () => 
+      <MessageContainer />
+       } />
       <Route path="/Users" render={ () => <UsersContainer />} />
       <Route path="/Login" render={ () => <LoginContainer />} />
       <Route path="/Music" render={ () => <MusicContainer />}/>

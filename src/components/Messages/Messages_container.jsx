@@ -30,3 +30,4 @@ export const MessageContainer = compose(
     }),
     WithAuthRedirect
 )(MessageComponent);
+

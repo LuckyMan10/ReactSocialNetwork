@@ -1,6 +1,7 @@
 
-const SEND_SEARCH = 'SEND_SEARCH';
-const CHANGE_SEARCH = 'CHANGE_SEARCH';
+
+const SEND_SEARCH = 'music/SEND_SEARCH';
+const CHANGE_SEARCH = 'music/CHANGE_SEARCH';
 
 const initialState = {
     searchMusic: '',
@@ -19,5 +20,8 @@ export const music_reducer = (state = initialState, action) => {
     return state;
 }
 
-export const serachSend = () => ({type: SEND_SEARCH})
 export const searchChange = (text) => ({type: CHANGE_SEARCH, text})
+export const searchSend = (search) => (dispatch) => {
+    
+   return search;
+}

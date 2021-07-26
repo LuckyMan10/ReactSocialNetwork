@@ -1,5 +1,5 @@
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
-const SEND_MESSAGE = 'SEND-MESSAGE';
+const UPDATE_NEW_MESSAGE_BODY = 'messages/UPDATE-NEW-MESSAGE-BODY';
+const SEND_MESSAGE = 'messages/SEND-MESSAGE';
 
 let initialState = {
   messageData: [

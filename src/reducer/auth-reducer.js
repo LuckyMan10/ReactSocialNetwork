@@ -1,9 +1,9 @@
 import {getAuthAPI, getAuthSessionAPI, deleteAuthSessionAPI} from '../api/api';
 
-const AUTH_SEND = 'AUTH_SEND';
-const LOGOUT = 'LOGOUT';
-const ERROR_AUTH = 'ERROR_AUTH';
-const AUTHORIZED = 'AUTHORIZED';
+const AUTH_SEND = 'login/auth/AUTH_SEND';
+const LOGOUT = 'login/auth/LOGOUT';
+const ERROR_AUTH = 'login/auth/ERROR_AUTH';
+const AUTHORIZED = 'login/auth/AUTHORIZED';
 
 let initialState = {
     password: '',
@@ -39,30 +39,28 @@ export const AuthSend = (value) => ({type: AUTH_SEND, value})
 export const errrorAuth = (message) => ({type: ERROR_AUTH, message})
 export const authorized = () => ({type: AUTHORIZED})
 
-export const logoutSession = () => (dispatch) => {
-    deleteAuthSessionAPI().then(data => {
-        dispatch(Logout())
-    })
+export const logoutSession = () => async (dispatch) => {
+    let response = await deleteAuthSessionAPI();
+    dispatch(Logout())
+
 }
 
-export const getAuthSession = () => (dispatch) => {
-    getAuthSessionAPI().then(data => {
-        if(data.resultCode === 0) {
+export const getAuthSession = () => async (dispatch) => {
+    let response = await getAuthSessionAPI();
+        if(response.data.resultCode === 0) {
            dispatch(AuthSend(true))
         }
-        if(data.resultCode === 1){
+        if(response.data.resultCode === 1){
            dispatch(authorized())
         }
-    })
 }
 
-export const getAuth = (email, password, rememberMe) => (dispatch) => {
-    getAuthAPI(email, password, rememberMe).then(data => {
-       if(data.resultCode === 0) {
+export const getAuth = (email, password, rememberMe) => async (dispatch) => {
+    let response = await getAuthAPI(email, password, rememberMe);
+       if(response.data.resultCode === 0) {
            dispatch(AuthSend(true))
        }
        else {
-           dispatch(errrorAuth(data.messages))
+           dispatch(errrorAuth(response.data.messages))
        }
-    })
 }

@@ -1,10 +1,10 @@
 import {getUsersProfileAPI, getUserStatusAPI, UpdateStatusAPI} from '../api/api';
 
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_STATUS_PROFILE = 'SET_STATUS_PROFILE';
+const ADD_POST = 'profile/ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'profile/UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
+const SET_STATUS_PROFILE = 'profile/SET_STATUS_PROFILE';
 
 
 let initialState = {
@@ -72,29 +72,27 @@ export const setUserProfile = (data) => ({type: SET_USER_PROFILE, data});
 
 export const setStatusProfile = (status) => ({type: SET_STATUS_PROFILE, status})
 
-export const getUsersProfile = (Id) => (dispatch) => {
-    getUsersProfileAPI(Id).then(response => {
-      dispatch(setUserProfile(response.data))
-    })
-  }
+export const getUsersProfile = (Id) => async (dispatch) => {
+    let response = await getUsersProfileAPI(Id);
+    dispatch(setUserProfile(response.data))
+}
 
-export const getStatusProfile = (Id) => (dispatch) => {
-  getUserStatusAPI(Id).then(response => {
+export const getStatusProfile = (Id) => async (dispatch) => {
+  let response = await getUserStatusAPI(Id);
     if(response.data == null) {
       dispatch(setStatusProfile("Статус пуст"))
     }
     else {
       dispatch(setStatusProfile(response.data))
     }
-  })
 }
-export const getUpdateStatus = (status) => (dispatch) => {
-  UpdateStatusAPI(status).then(resultCode => {
-    if (resultCode === 0) {
+
+export const getUpdateStatus = (status) => async (dispatch) => {
+  let response = await UpdateStatusAPI(status);
+    if (response.data.resultCode === 0) {
       dispatch(setStatusProfile(status))
     }
     else {
       alert('Ошибка!')
     }
-  })
 }

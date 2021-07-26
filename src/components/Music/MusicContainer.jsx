@@ -1,18 +1,25 @@
 import {Music} from './Music';
 import { connect } from 'react-redux';
-import { serachSend, searchChange } from '../../reducer/music-reducer'
+import { searchChange, searchSend } from '../../reducer/music-reducer'
 
 export const MusicComponent = (props) => {
     let search = (e) => {
-    let text = e.target.value;
-    props.searchChange(text)
+        let text = e.target.value;
+        props.searchChange(text)
+
+    }
+
+    let musicSearched = () => {
+        props.searchSend(props.musicSearch)
     }
     return (
         <Music 
         {...props}
         musicSearch={props.musicSearch}
         search={search}
+        musicSearched={musicSearched}
         searchChange={props.searchChange}
+        searchSend={props.searchSend}
         />
     )
 }
@@ -20,12 +27,11 @@ export const MusicComponent = (props) => {
 let mapStateToProps = (state) => {
     return {
     musicSearch: state.MusicReducer.searchMusic,
-    serachChange: state.MusicReducer.serachChange,
     }
 }
 
 export const MusicContainer = connect(mapStateToProps, {
-    serachSend,
+    searchSend,
     searchChange,
 })(MusicComponent)
 

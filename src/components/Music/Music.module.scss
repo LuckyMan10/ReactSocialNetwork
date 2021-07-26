@@ -1,9 +1,10 @@
+.music button:hover{
+    background: none;
+}
 .header__search {
     display: flex;
     flex-direction: row;
-    .search_button:hover{
-        background: none;
-    }
+    padding-top: 20px;
     label {
         padding-right: 5px;
     }
